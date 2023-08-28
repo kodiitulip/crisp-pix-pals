@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpq1j281r1b3g"]
+
+[ext_resource type="PackedScene" uid="uid://dfxerro1x5j40" path="res://assets/scenes/player/player.tscn" id="1_5cvpd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ea2ik"]
+sky_top_color = Color(0.423529, 0.470588, 0.34902, 1)
+sky_horizon_color = Color(0.294118, 0.301961, 0.313726, 1)
+sky_curve = 0.055953
+ground_bottom_color = Color(0.0705882, 0.2, 0.192157, 1)
+ground_curve = 0.00256
+
+[sub_resource type="Sky" id="Sky_6aqtb"]
+sky_material = SubResource("ProceduralSkyMaterial_ea2ik")
+
+[sub_resource type="Environment" id="Environment_n3gph"]
+background_mode = 2
+sky = SubResource("Sky_6aqtb")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grger"]
+albedo_color = Color(0.298039, 0.478431, 0.709804, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7a6yv"]
+material = SubResource("StandardMaterial3D_grger")
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6svu"]
+albedo_color = Color(0.0901961, 0.109804, 0.0823529, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ffbyn"]
+material = SubResource("StandardMaterial3D_h6svu")
+size = Vector3(2, 2, 1)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n3gph")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+sky_mode = 1
+
+[node name="Enviroment" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGMesh3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_7a6yv")
+
+[node name="Floor2" type="CSGMesh3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_ffbyn")
+
+[node name="Player" parent="." instance=ExtResource("1_5cvpd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179716, 0, -3.47163)

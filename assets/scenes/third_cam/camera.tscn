@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://clv3w0me4bniw"]
+
+[ext_resource type="Script" path="res://assets/scenes/third_cam/camera.gd" id="1_pqoqn"]
+
+[node name="CameraMount" type="Node3D"]
+script = ExtResource("1_pqoqn")
+
+[node name="SpringArm" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.983166, 0.182716, 0, -0.182716, 0.983166, 0.259753, 1.449, 0)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm"]
+current = true
+fov = 80.0

@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfxerro1x5j40"]
+
+[ext_resource type="Script" path="res://assets/scenes/player/player.gd" id="1_2ml70"]
+[ext_resource type="PackedScene" uid="uid://dt1vhrighn6c2" path="res://assets/scenes/player/player_model.tscn" id="1_knwaq"]
+[ext_resource type="Script" path="res://assets/components/entity_components/movement.gd" id="3_sd2bd"]
+[ext_resource type="PackedScene" uid="uid://clv3w0me4bniw" path="res://assets/scenes/third_cam/camera.tscn" id="3_urt1g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_413wl"]
+radius = 0.355227
+height = 1.6
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_2ml70")
+
+[node name="CharacterModel" parent="." instance=ExtResource("1_knwaq")]
+
+[node name="MovementComponent" type="Node" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("3_sd2bd")
+character = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_413wl")
+
+[node name="CameraMount" parent="." instance=ExtResource("3_urt1g")]

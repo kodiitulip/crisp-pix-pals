@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://d17pbp6jlcqm7"]
+
+[ext_resource type="Texture2D" path="res://assets/art/3d_models/player/textures/ImphenziaPixel-BaseColor.png" id="1_g6fsn"]
+[ext_resource type="Texture2D" path="res://assets/art/3d_models/player/textures/ImphenziaPixel-Emission.png" id="2_n680m"]
+[ext_resource type="Texture2D" path="res://assets/art/3d_models/player/textures/ImphenziaPixel-Attributes.png" id="3_fx4cw"]
+[ext_resource type="Material" uid="uid://duvjnjd54eywl" path="res://assets/art/materials/pixpal/ImphenziaPixPalShader.tres" id="4_egaml"]
+
+[resource]
+resource_name = "ImphenziaPixPal"
+next_pass = ExtResource("4_egaml")
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_g6fsn")
+metallic = 1.0
+metallic_texture = ExtResource("3_fx4cw")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_fx4cw")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_n680m")
+texture_filter = 2
